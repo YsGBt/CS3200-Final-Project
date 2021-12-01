@@ -10,7 +10,12 @@ const RecordEditorScreen = () => {
     const table = schema.tables.find(table => table.name === tableName);
 
     console.log(schema);
-    
+
+    // const [one, setOne] = useState({});
+    // const findOneToMany = (references) =>
+    //     service.findOneByMany(table.name, id, references)
+    //       .then(one => setOne(one));
+
     const [record, setRecord] = useState({});
     const history = useHistory();
     const removeRecord = () =>

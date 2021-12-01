@@ -8,6 +8,10 @@ export const findRecordById = (table, id) =>
   fetch(`${URL}/${table}/${id}`)
     .then(response => response.json());
 
+export const findOneByMany = (many, id, one) =>
+  fetch(`${URL}/${many}/${id}/${one}/manytoone`)
+    .then(response => response.json());
+
 export const findOneToManyRecords = (oneTable, id, manyTable) =>
   fetch(`${URL}/${oneTable}/${id}/${manyTable}`)
     .then(response => response.json());
@@ -36,7 +40,8 @@ export default {
   findRecordById,
   findOneToManyRecords,
   removeRecord,
-  createRecord, 
+  createRecord,
   createOneToMany,
-  updateRecord
+  updateRecord,
+  findOneByMany
 }

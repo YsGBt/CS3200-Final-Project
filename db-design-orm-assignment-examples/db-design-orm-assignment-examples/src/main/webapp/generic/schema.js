@@ -32,8 +32,11 @@ export const schema = {
         {name: 'genre', label: 'Ebook Genre', references: 'genres'},
         {name: 'author', label: 'Ebook Author', references: 'authors'},
       ],
-      relations: [
-        {name: 'author', label: "Ebook's Author", references: 'authors'}
+      // relations: [
+      //   {name: 'author', label: "Ebook's Author", references: 'authors'}
+      // ],
+      manyToOne: [
+        {name: 'author', label: "Ebook's Author", references: 'authors', id: 'id'}
       ],
       list: {
         id: { show: false },

@@ -68,6 +68,12 @@ public class EbookDao {
         return ebookRepository.findById(id).get().getPurchases();
     }
 
+    @GetMapping("/api/ebooks/{id}/authors/manytoone")
+    public Author findEbookAuthor(
+        @PathVariable("id") Integer id) {
+        return ebookRepository.findById(id).get().getAuthor();
+    }
+
     @PutMapping("/api/ebooks")
     public void updateRecord(
             @RequestBody Ebook newRecord
