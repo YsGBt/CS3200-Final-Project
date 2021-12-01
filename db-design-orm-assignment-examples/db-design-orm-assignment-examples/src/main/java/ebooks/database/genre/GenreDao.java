@@ -39,11 +39,11 @@ public class GenreDao {
 
     @GetMapping("/api/genres/create")
     public void createRecord() {
-        Genre newRecord = new Genre();
-
-        newRecord.setGenre("New Name");
-
-        genreRepository.save(newRecord);
+//        Genre newRecord = new Genre();
+//
+//        newRecord.setId("New Name");
+//
+//        genreRepository.save(newRecord);
     }
 
     @GetMapping("/api/genres/{genre}/ebooks/create")
@@ -72,8 +72,9 @@ public class GenreDao {
     public void updateRecord(
             @RequestBody Genre newRecord
     ) {
-        Genre oldRecord = genreRepository.findById(newRecord.getGenre()).get();
+        Genre oldRecord = genreRepository.findById(newRecord.getId()).get();
 
+        oldRecord.setId(newRecord.getId());
         oldRecord.setEbooks(newRecord.getEbooks());
 
         genreRepository.save(oldRecord);
