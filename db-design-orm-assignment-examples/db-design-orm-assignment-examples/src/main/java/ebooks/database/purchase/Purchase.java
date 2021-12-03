@@ -4,14 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import ebooks.database.ebook.Ebook;
 import ebooks.database.user.User;
 import java.util.Date;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "purchases")
@@ -21,6 +14,7 @@ public class Purchase {
     private Integer id;
     @Temporal(TemporalType.TIMESTAMP)
     private Date purchaseDate;
+
     @ManyToOne
     @JsonIgnore
     private User user;
@@ -28,7 +22,28 @@ public class Purchase {
     @JsonIgnore
     private Ebook ebook;
 
+    @Transient
+    private String userName;
+    @Transient
+    private String ebookName;
+
     ///////////////////////////////////////////////////////////////////////////
+    @Transient
+    public String getUserName() {
+        if (user == null) {
+            return null;
+        }
+        return user.getFirstName() + " " + user.getLastName();
+    }
+
+    @Transient
+    public String getEbookName() {
+        if (ebook == null) {
+            return null;
+        }
+        return ebook.getTitle();
+    }
+
     public Integer getId() {
         return id;
     }

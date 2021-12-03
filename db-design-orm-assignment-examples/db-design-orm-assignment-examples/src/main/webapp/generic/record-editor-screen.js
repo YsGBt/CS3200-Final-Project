@@ -11,10 +11,10 @@ const RecordEditorScreen = () => {
 
     console.log(schema);
 
-    const [one, setOne] = useState({});
-    const findOneToMany = (references) =>
-        service.findOneByMany(table.name, id, references)
-          .then(one => setOne(one)).then(() => window.location.reload());
+    // const [one, setOne] = useState({});
+    // const findOneToMany = (references) =>
+    //     service.findOneByMany(table.name, id, references)
+    //       .then(one => setOne(one)).then(() => window.location.reload());
 
     const [record, setRecord] = useState({});
     const history = useHistory();
@@ -79,26 +79,6 @@ const RecordEditorScreen = () => {
                         </div>
                     </div>
             }
-            {
-              table.manyToOne &&
-              <div className="mt-2">
-                <div className="list-group">
-                  {
-                    table.manyToOne.map((relation, ndx) =>
-                        <Link
-                            // href={"#/" + relation.references + "/" + one.id + "/edit"}
-                            className="list-group-item" key={ndx}
-                              to={`/${relation.references}/1/edit`}
-                           // onClick={findOneToMany(relation.references)}
-                        >
-                          {relation.label}
-                          <i className="fas fa-chevron-right float-end"></i>
-                        </Link>
-                    )
-                  }
-                </div>
-              </div>
-            }
             <br/>
             <button onClick={saveRecord}
                     className="btn btn-primary me-2">
@@ -108,5 +88,26 @@ const RecordEditorScreen = () => {
         </div>
     )
 }
+
+// {
+//     table.manyToOne &&
+//     <div className="mt-2">
+//         <div className="list-group">
+//             {
+//                 table.manyToOne.map((relation, ndx) =>
+//                     <Link
+//                         // href={"#/" + relation.references + "/" + one.id + "/edit"}
+//                         className="list-group-item" key={ndx}
+//                         to={`/${relation.references}/1/edit`}
+//                         // onClick={findOneToMany(relation.references)}
+//                     >
+//                         {relation.label}
+//                         <i className="fas fa-chevron-right float-end"></i>
+//                     </Link>
+//                 )
+//             }
+//         </div>
+//     </div>
+// }
 
 export default RecordEditorScreen;

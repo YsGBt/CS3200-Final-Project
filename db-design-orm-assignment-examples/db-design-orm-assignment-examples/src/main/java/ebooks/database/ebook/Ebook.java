@@ -1,19 +1,11 @@
 package ebooks.database.ebook;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import ebooks.database.author.Author;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import ebooks.database.genre.Genre;
 import ebooks.database.purchase.Purchase;
 import java.util.List;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "ebooks")
@@ -23,9 +15,9 @@ public class Ebook {
     private Integer id;
     private String title;
     private int publishedYear;
+
     @ManyToOne
     @JoinColumn(name = "genre")
-//    @JsonIgnoreProperties(value = {"ebooks"})
     @JsonIgnore
     private Genre genre;
     @ManyToOne
@@ -34,7 +26,28 @@ public class Ebook {
     @OneToMany(mappedBy = "ebook")
     private List<Purchase> purchases;
 
+    @Transient
+    private String genreType;
+    @Transient
+    private String authorName;
+
     ///////////////////////////////////////////////////////////////////////////
+    @Transient
+    public String getGenreType() {
+        if (genre == null) {
+            return null;
+        }
+        return genre.getId();
+    }
+
+    @Transient
+    public String getAuthorName() {
+        if (author == null) {
+            return null;
+        }
+        return author.getFirstName() + " " + author.getLastName();
+    }
+
     public Integer getId() {
         return id;
     }

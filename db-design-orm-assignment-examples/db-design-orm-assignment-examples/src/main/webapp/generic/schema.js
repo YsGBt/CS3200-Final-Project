@@ -29,22 +29,25 @@ export const schema = {
         {name: 'id', label: 'Ebook ID', readonly: true},
         {name: 'title', label: 'Ebook Title'},
         {name: 'publishedYear', label: 'Ebook Published Year'},
-        {name: 'genre', label: 'Ebook Genre', references: 'genres'},
-        {name: 'author', label: 'Ebook Author', references: 'authors'},
+        {name: 'genreType', label: 'Genre', readonly: true},
+        {name: 'authorName', label: 'Author Name', readonly: true}
       ],
       relations: [
-        {name: 'genre', label: 'Ebook Genre', references: 'genres'},
-        {name: 'author', label: "Ebook's Author", references: 'authors'}
+        {name: 'purchases', label: "Purchased Record", references: 'purchases'}
+        // {name: 'genre', label: 'Ebook Genre', references: 'genres'},
+        // {name: 'author', label: "Ebook's Author", references: 'authors'}
       ],
-      manyToOne: [
-        {name: 'author', label: "Ebook's Author", references: 'authors', id: 'id'}
-      ],
+      // manyToOne: [
+      //   {name: 'author', label: "Ebook's Author", references: 'authors', id: 'id'}
+      // ],
       list: {
         id: { show: false },
         title: { show: true },
         publishedYear: { show: false },
         genre: { show: false },
         author: { show: false },
+        genreType: { show: false},
+        authorName: { show: false },
       }
     },
     {
@@ -52,7 +55,7 @@ export const schema = {
       label: 'Genre',
       labelPlural: 'Genres',
       fields: [
-        {name: 'id', label: 'Genre', readonly: false},
+        {name: 'id', label: 'Genre', readonly: true},
       ],
       relations: [
         {name: 'ebooks', label: "Ebooks With Genre", references: 'ebooks'}
@@ -68,10 +71,14 @@ export const schema = {
       fields: [
         {name: 'id', label: 'Purchase ID', readonly: true},
         {name: 'purchaseDate', label: 'Purchase Date'},
+        {name: 'userName', label: 'Purchaser Name', readonly: true},
+        {name: 'ebookName', label: 'Purchased Ebook', readonly: true},
       ],
       list: {
         id: { show: true },
-        purchaseDate: { show: true },
+        purchaseDate: { show: false },
+        userName: { show: true },
+        ebookName: { show: true },
       }
     },
     {
