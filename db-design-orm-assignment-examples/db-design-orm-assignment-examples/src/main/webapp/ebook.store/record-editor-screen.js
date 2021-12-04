@@ -100,6 +100,4 @@ const RecordEditorScreen = () => {
     )
 }
 
-
-
 export default RecordEditorScreen;

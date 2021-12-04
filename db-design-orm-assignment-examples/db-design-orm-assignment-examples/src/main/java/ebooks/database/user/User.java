@@ -1,6 +1,7 @@
 package ebooks.database.user;
 
 import ebooks.database.purchase.Purchase;
+import java.sql.Timestamp;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.Entity;
@@ -24,8 +25,7 @@ public class User {
   private String username;
   private String password;
   private String email;
-  @Temporal(TemporalType.TIMESTAMP)
-  private Date dateOfBirth;
+  private Timestamp dateOfBirth;
   @OneToMany(mappedBy = "user")
   private List<Purchase> purchases;
 
@@ -71,11 +71,11 @@ public class User {
     this.email = email;
   }
 
-  public Date getDateOfBirth() {
+  public Timestamp getDateOfBirth() {
     return dateOfBirth;
   }
 
-  public void setDateOfBirth(Date dateOfBirth) {
+  public void setDateOfBirth(Timestamp dateOfBirth) {
     this.dateOfBirth = dateOfBirth;
   }
 

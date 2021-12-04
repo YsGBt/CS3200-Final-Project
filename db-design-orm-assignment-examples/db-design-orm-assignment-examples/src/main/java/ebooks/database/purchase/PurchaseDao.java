@@ -1,7 +1,9 @@
 package ebooks.database.purchase;
 
 import ebooks.database.ebook.Ebook;
+import ebooks.database.ebook.EbookRepository;
 import ebooks.database.user.User;
+import ebooks.database.user.UserRepository;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -17,6 +19,12 @@ public class PurchaseDao {
 
   @Autowired
   PurchaseRepository repository;
+
+  @Autowired
+  UserRepository userRepository;
+
+  @Autowired
+  EbookRepository ebookRepository;
 
   @GetMapping("/api/purchases")
   public List<Purchase> findAllRecords() {
@@ -59,10 +67,15 @@ public class PurchaseDao {
       @RequestBody Purchase newRecord
   ) {
     Purchase oldRecord = repository.findById(newRecord.getId()).get();
+    System.out.println(newRecord.getPurchaseDate());
 
     oldRecord.setPurchaseDate(newRecord.getPurchaseDate());
-    oldRecord.setEbook(newRecord.getEbook());
-    oldRecord.setUser(newRecord.getUser());
+    if (newRecord.getEbookId() != null) {
+      oldRecord.setEbook(ebookRepository.findById(newRecord.getEbookId()).get());
+    }
+    if (newRecord.getUserId() != null) {
+      oldRecord.setUser(userRepository.findById(newRecord.getUserId()).get());
+    }
 
     repository.save(oldRecord);
   }

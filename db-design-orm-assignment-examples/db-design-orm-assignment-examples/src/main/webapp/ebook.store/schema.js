@@ -29,7 +29,8 @@ export const schema = {
         {name: 'id', label: 'Ebook ID', readonly: true},
         {name: 'title', label: 'Ebook Title'},
         {name: 'publishedYear', label: 'Ebook Published Year'},
-        {name: 'genreType', label: 'Genre', readonly: true},
+        {name: 'genreType', label: 'Genre', readonly: false},
+        {name: 'authorId', label: 'Author ID', readonly: false},
         {name: 'authorName', label: 'Author Name', readonly: true}
       ],
       relations: [
@@ -46,6 +47,7 @@ export const schema = {
         genre: { show: false },
         author: { show: false },
         genreType: { show: false},
+        authorId: { show: false},
         authorName: { show: false },
       }
     },
@@ -70,7 +72,9 @@ export const schema = {
       fields: [
         {name: 'id', label: 'Purchase ID', readonly: true},
         {name: 'purchaseDate', label: 'Purchase Date'},
+        {name: 'userId', label: 'Purchaser ID', readonly: false},
         {name: 'userName', label: 'Purchaser Name', readonly: true},
+        {name: 'ebookId', label: 'Ebook ID', readonly: false},
         {name: 'ebookName', label: 'Purchased Ebook', readonly: true},
       ],
       manyToOne: [
@@ -78,9 +82,11 @@ export const schema = {
         {name: 'ebooks', label: 'Purchased Ebook', references: 'ebooks'}
       ],
       list: {
-        id: { show: true },
+        id: { show: false },
         purchaseDate: { show: false },
+        userId: { show: false },
         userName: { show: true },
+        ebookId: { show: false },
         ebookName: { show: true },
       }
     },

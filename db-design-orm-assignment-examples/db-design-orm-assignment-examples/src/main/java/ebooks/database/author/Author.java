@@ -1,6 +1,7 @@
 package ebooks.database.author;
 
 import ebooks.database.ebook.Ebook;
+import java.sql.Timestamp;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.Entity;
@@ -15,49 +16,55 @@ import javax.persistence.TemporalType;
 @Entity
 @Table(name = "authors")
 public class Author {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
-    private String firstName;
-    private String lastName;
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date dateOfBirth;
 
-    @OneToMany(mappedBy = "author")
-    private List<Ebook> ebooks;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Integer id;
+  private String firstName;
+  private String lastName;
+  private Timestamp dateOfBirth;
 
-    ///////////////////////////////////////////////////////////////////////////
-    public Integer getId() {
-        return id;
-    }
+  @OneToMany(mappedBy = "author")
+  private List<Ebook> ebooks;
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
+  ///////////////////////////////////////////////////////////////////////////
+  public Integer getId() {
+    return id;
+  }
 
-    public String getFirstName() {return firstName;}
+  public void setId(Integer id) {
+    this.id = id;
+  }
 
-    public void setFirstName(String firstName) {this.firstName = firstName;}
+  public String getFirstName() {
+    return firstName;
+  }
 
-    public String getLastName() {return lastName;}
+  public void setFirstName(String firstName) {
+    this.firstName = firstName;
+  }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
+  public String getLastName() {
+    return lastName;
+  }
 
-    public Date getDateOfBirth() {
-        return dateOfBirth;
-    }
+  public void setLastName(String lastName) {
+    this.lastName = lastName;
+  }
 
-    public void setDateOfBirth(Date dateOfBirth) {
-        this.dateOfBirth = dateOfBirth;
-    }
+  public Timestamp getDateOfBirth() {
+    return dateOfBirth;
+  }
 
-    public List<Ebook> getEbooks() {
-        return ebooks;
-    }
+  public void setDateOfBirth(Timestamp dateOfBirth) {
+    this.dateOfBirth = dateOfBirth;
+  }
 
-    public void setEbooks(List<Ebook> ebooks) {
-        this.ebooks = ebooks;
-    }
+  public List<Ebook> getEbooks() {
+    return ebooks;
+  }
+
+  public void setEbooks(List<Ebook> ebooks) {
+    this.ebooks = ebooks;
+  }
 }

@@ -16,7 +16,7 @@ const ManyToOneRecordEditorScreen = () => {
     const findOneByMany = () =>
         service.findOneByMany(manyTable, manyId, oneTable)
           .then(one => setOne(one));
-    useEffect(findOneByMany, []);
+    useEffect(findOneByMany, [manyTable, manyId, oneTable]);
 
     const id = one.id;
 
@@ -28,7 +28,7 @@ const ManyToOneRecordEditorScreen = () => {
     const findRecordById = () =>
       service.findRecordById(table.name, id)
         .then(record => setRecord(record));
-    useEffect(findRecordById, [id]);
+    useEffect(findRecordById, [table, id]);
     const updateLocalCopy = (event, field) => {
       const newValue = event.target.value;
       setRecord({
@@ -108,6 +108,5 @@ const ManyToOneRecordEditorScreen = () => {
         </div>
     )
 }
-
 
 export default ManyToOneRecordEditorScreen;

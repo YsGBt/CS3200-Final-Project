@@ -1,7 +1,9 @@
 package ebooks.database.ebook;
 
 import ebooks.database.author.Author;
+import ebooks.database.author.AuthorRepository;
 import ebooks.database.genre.Genre;
+import ebooks.database.genre.GenreRepository;
 import ebooks.database.purchase.Purchase;
 import ebooks.database.purchase.PurchaseRepository;
 import java.util.List;
@@ -21,7 +23,13 @@ public class EbookDao {
 
     @Autowired
     PurchaseRepository purchaseRepository;
-    
+
+    @Autowired
+    GenreRepository genreRepository;
+
+    @Autowired
+    AuthorRepository authorRepository;
+
     @GetMapping("/api/ebooks")
     public List<Ebook> findAllRecords() {
         return (List<Ebook>) ebookRepository.findAll();
@@ -89,8 +97,12 @@ public class EbookDao {
 
         oldRecord.setTitle(newRecord.getTitle());
         oldRecord.setPublishedYear(newRecord.getPublishedYear());
-        oldRecord.setGenre(newRecord.getGenre());
-        oldRecord.setAuthor(newRecord.getAuthor());
+        if (newRecord.getGenreType() != null) {
+            oldRecord.setGenre(genreRepository.findById(newRecord.getGenreType()).get());
+        }
+        if (newRecord.getAuthorId() != null) {
+            oldRecord.setAuthor(authorRepository.findById(newRecord.getAuthorId()).get());
+        }
         oldRecord.setPurchases(newRecord.getPurchases());
 
         ebookRepository.save(oldRecord);

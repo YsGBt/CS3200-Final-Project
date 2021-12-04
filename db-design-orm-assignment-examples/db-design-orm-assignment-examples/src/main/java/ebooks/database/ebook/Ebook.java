@@ -10,89 +10,100 @@ import javax.persistence.*;
 @Entity
 @Table(name = "ebooks")
 public class Ebook {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
-    private String title;
-    private int publishedYear;
 
-    @ManyToOne
-    @JoinColumn(name = "genre")
-    @JsonIgnore
-    private Genre genre;
-    @ManyToOne
-    @JsonIgnore
-    private Author author;
-    @OneToMany(mappedBy = "ebook")
-    private List<Purchase> purchases;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Integer id;
+  private String title;
+  private int publishedYear;
 
-    @Transient
-    private String genreType;
-    @Transient
-    private String authorName;
+  @ManyToOne
+  @JoinColumn(name = "genre")
+  @JsonIgnore
+  private Genre genre;
+  @ManyToOne
+  @JsonIgnore
+  private Author author;
+  @OneToMany(mappedBy = "ebook")
+  private List<Purchase> purchases;
 
-    ///////////////////////////////////////////////////////////////////////////
-    @Transient
-    public String getGenreType() {
-        if (genre == null) {
-            return null;
-        }
-        return genre.getId();
+  @Transient
+  private String genreType;
+  @Transient
+  private Integer authorId;
+  @Transient
+  private String authorName;
+
+  ///////////////////////////////////////////////////////////////////////////
+  @Transient
+  public String getGenreType() {
+    if (genre == null) {
+      return genreType;
     }
+    return genre.getId();
+  }
 
-    @Transient
-    public String getAuthorName() {
-        if (author == null) {
-            return null;
-        }
-        return author.getFirstName() + " " + author.getLastName();
+  @Transient
+  public Integer getAuthorId() {
+    if (author == null) {
+      return authorId;
     }
+    return author.getId();
+  }
 
-    public Integer getId() {
-        return id;
+  @Transient
+  public String getAuthorName() {
+    if (author == null) {
+      return null;
     }
+    return author.getFirstName() + " " + author.getLastName();
+  }
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
+  public Integer getId() {
+    return id;
+  }
 
-    public String getTitle() {
-        return title;
-    }
+  public void setId(Integer id) {
+    this.id = id;
+  }
 
-    public void setTitle(String title) {
-        this.title = title;
-    }
+  public String getTitle() {
+    return title;
+  }
 
-    public int getPublishedYear() {
-        return publishedYear;
-    }
+  public void setTitle(String title) {
+    this.title = title;
+  }
 
-    public void setPublishedYear(int publishedYear) {
-        this.publishedYear = publishedYear;
-    }
+  public int getPublishedYear() {
+    return publishedYear;
+  }
 
-    public Genre getGenre() {
-        return genre;
-    }
+  public void setPublishedYear(int publishedYear) {
+    this.publishedYear = publishedYear;
+  }
 
-    public void setGenre(Genre genre) {
-        this.genre = genre;
-    }
+  public Genre getGenre() {
+    return genre;
+  }
 
-    public Author getAuthor() {
-        return author;
-    }
+  public void setGenre(Genre genre) {
+    this.genre = genre;
+  }
 
-    public void setAuthor(Author author) {
-        this.author = author;
-    }
+  public Author getAuthor() {
+    return author;
+  }
 
-    public List<Purchase> getPurchases() {
-        return purchases;
-    }
+  public void setAuthor(Author author) {
+    this.author = author;
+  }
 
-    public void setPurchases(List<Purchase> purchases) {
-        this.purchases = purchases;
-    }
+  public List<Purchase> getPurchases() {
+    return purchases;
+  }
+
+  public void setPurchases(List<Purchase> purchases) {
+    this.purchases = purchases;
+  }
 }

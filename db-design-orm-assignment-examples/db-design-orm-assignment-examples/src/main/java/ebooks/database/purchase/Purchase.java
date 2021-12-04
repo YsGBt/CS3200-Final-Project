@@ -3,6 +3,7 @@ package ebooks.database.purchase;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import ebooks.database.ebook.Ebook;
 import ebooks.database.user.User;
+import java.sql.Timestamp;
 import java.util.Date;
 import javax.persistence.*;
 
@@ -12,8 +13,8 @@ public class Purchase {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date purchaseDate;
+//    @Temporal(TemporalType.TIMESTAMP)
+    private Timestamp purchaseDate;
 
     @ManyToOne
     @JsonIgnore
@@ -23,17 +24,37 @@ public class Purchase {
     private Ebook ebook;
 
     @Transient
+    private Integer userId;
+    @Transient
     private String userName;
+    @Transient
+    private Integer ebookId;
     @Transient
     private String ebookName;
 
     ///////////////////////////////////////////////////////////////////////////
+    @Transient
+    public Integer getUserId() {
+        if (user == null) {
+            return userId;
+        }
+        return user.getId();
+    }
+
     @Transient
     public String getUserName() {
         if (user == null) {
             return null;
         }
         return user.getFirstName() + " " + user.getLastName();
+    }
+
+    @Transient
+    public Integer getEbookId() {
+        if (ebook == null) {
+            return ebookId;
+        }
+        return ebook.getId();
     }
 
     @Transient
@@ -68,11 +89,11 @@ public class Purchase {
         this.ebook = ebook;
     }
 
-    public Date getPurchaseDate() {
+    public Timestamp getPurchaseDate() {
         return purchaseDate;
     }
 
-    public void setPurchaseDate(Date purchaseDate) {
+    public void setPurchaseDate(Timestamp purchaseDate) {
         this.purchaseDate = purchaseDate;
     }
 }
