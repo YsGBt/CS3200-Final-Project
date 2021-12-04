@@ -34,7 +34,7 @@ public class GenreDao {
     @GetMapping("/api/genres/{genre}/remove")
     public void removeRecord(
             @PathVariable("genre") String genre) {
-        genreRepository.deleteById(genre);
+//        genreRepository.deleteById(genre);
     }
 
     @GetMapping("/api/genres/create")

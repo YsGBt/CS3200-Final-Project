@@ -1,6 +1,7 @@
 package ebooks.database.ebook;
 
 import ebooks.database.author.Author;
+import ebooks.database.genre.Genre;
 import ebooks.database.purchase.Purchase;
 import ebooks.database.purchase.PurchaseRepository;
 import java.util.List;
@@ -74,6 +75,12 @@ public class EbookDao {
         return ebookRepository.findById(id).get().getAuthor();
     }
 
+    @GetMapping("/api/ebooks/{id}/genres/manytoone")
+    public Genre findEbookGenre(
+        @PathVariable("id") Integer id) {
+        return ebookRepository.findById(id).get().getGenre();
+    }
+
     @PutMapping("/api/ebooks")
     public void updateRecord(
             @RequestBody Ebook newRecord
@@ -83,7 +90,8 @@ public class EbookDao {
         oldRecord.setTitle(newRecord.getTitle());
         oldRecord.setPublishedYear(newRecord.getPublishedYear());
         oldRecord.setGenre(newRecord.getGenre());
-//        oldRecord.setAuthor(newRecord.getAuthor());
+        oldRecord.setAuthor(newRecord.getAuthor());
+        oldRecord.setPurchases(newRecord.getPurchases());
 
         ebookRepository.save(oldRecord);
     }

@@ -79,6 +79,7 @@ public class UserDao {
         oldRecord.setPassword(newRecord.getPassword());
         oldRecord.setEmail(newRecord.getEmail());
         oldRecord.setDateOfBirth(newRecord.getDateOfBirth());
+        oldRecord.setPurchases(newRecord.getPurchases());
 
         userRepository.save(oldRecord);
     }

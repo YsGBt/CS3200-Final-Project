@@ -3,13 +3,22 @@ import {schema} from "./schema";
 const { useState, useEffect } = React;
 const {Link, useParams, useHistory} = window.ReactRouterDOM;
 
-const RecordEditorScreen = () => {
+const ManyToOneRecordEditorScreen = () => {
     const params = useParams();
-    const tableName = params.table;
-    const id = params.id;
-    const table = schema.tables.find(table => table.name === tableName);
+    const oneTable = params.oneTable;
+    const manyTable = params.manyTable;
+    const manyId = params.id;
+    const table = schema.tables.find(table => table.name === oneTable);
 
     console.log(schema);
+
+    const [one, setOne] = useState({});
+    const findOneByMany = () =>
+        service.findOneByMany(manyTable, manyId, oneTable)
+          .then(one => setOne(one));
+    useEffect(findOneByMany, []);
+
+    const id = one.id;
 
     const [record, setRecord] = useState({});
     const history = useHistory();
@@ -19,7 +28,7 @@ const RecordEditorScreen = () => {
     const findRecordById = () =>
       service.findRecordById(table.name, id)
         .then(record => setRecord(record));
-    useEffect(findRecordById, []);
+    useEffect(findRecordById, [id]);
     const updateLocalCopy = (event, field) => {
       const newValue = event.target.value;
       setRecord({
@@ -101,5 +110,4 @@ const RecordEditorScreen = () => {
 }
 
 
-
-export default RecordEditorScreen;
+export default ManyToOneRecordEditorScreen;

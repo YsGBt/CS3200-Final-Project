@@ -34,12 +34,11 @@ export const schema = {
       ],
       relations: [
         {name: 'purchases', label: "Purchased Record", references: 'purchases'}
-        // {name: 'genre', label: 'Ebook Genre', references: 'genres'},
-        // {name: 'author', label: "Ebook's Author", references: 'authors'}
       ],
-      // manyToOne: [
-      //   {name: 'author', label: "Ebook's Author", references: 'authors', id: 'id'}
-      // ],
+      manyToOne: [
+        {name: 'author', label: "Ebook's Author", references: 'authors'},
+        {name: 'genre', label: 'Ebook Genre', references: 'genres'}
+      ],
       list: {
         id: { show: false },
         title: { show: true },
@@ -73,6 +72,10 @@ export const schema = {
         {name: 'purchaseDate', label: 'Purchase Date'},
         {name: 'userName', label: 'Purchaser Name', readonly: true},
         {name: 'ebookName', label: 'Purchased Ebook', readonly: true},
+      ],
+      manyToOne: [
+        {name: 'users', label: "Purchaser", references: 'users'},
+        {name: 'ebooks', label: 'Purchased Ebook', references: 'ebooks'}
       ],
       list: {
         id: { show: true },

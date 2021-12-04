@@ -34,7 +34,6 @@ export const updateRecord = (table, newRecord) =>
     }
   });
 
-// TODO: export all functions as the API to this service
 export default {
   findAllRecords,
   findRecordById,
