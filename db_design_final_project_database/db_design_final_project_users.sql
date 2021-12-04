@@ -32,7 +32,7 @@ CREATE TABLE `users` (
   `date_of_birth` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `id_UNIQUE` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -41,7 +41,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'John','Smith','johnsmith','12345','johns@gmail.com','1990-04-20 00:00:00'),(2,'Sara','Miller','saramiller','password@','saram@gmail.com','1996-07-27 00:00:00');
+INSERT INTO `users` VALUES (1,'John','Smith','johnsmith','12345','johns@gmail.com','1990-04-20 00:00:00'),(2,'Sara','Miller','saramiller','password@','saram@gmail.com','1996-07-27 00:00:00'),(3,'Steven','Pang','stevenpang','mypassword','pang.qis@northeastern.edu','2001-04-10 00:00:00');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -54,4 +54,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-11-25 16:46:09
+-- Dump completed on 2021-12-04 16:12:29

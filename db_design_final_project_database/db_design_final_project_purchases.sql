@@ -24,7 +24,7 @@ DROP TABLE IF EXISTS `purchases`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `purchases` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `purchase_date` datetime DEFAULT NULL,
+  `purchase_date` datetime DEFAULT CURRENT_TIMESTAMP,
   `user_id` int DEFAULT NULL,
   `ebook_id` int DEFAULT NULL,
   PRIMARY KEY (`id`),
@@ -33,7 +33,7 @@ CREATE TABLE `purchases` (
   KEY `ebook_id_idx` (`ebook_id`),
   CONSTRAINT `purchases_to_ebook` FOREIGN KEY (`ebook_id`) REFERENCES `ebooks` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `purchases_to_user` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -42,7 +42,7 @@ CREATE TABLE `purchases` (
 
 LOCK TABLES `purchases` WRITE;
 /*!40000 ALTER TABLE `purchases` DISABLE KEYS */;
-INSERT INTO `purchases` VALUES (1,'2019-01-23 00:00:00',1,1),(2,'2020-03-29 00:00:00',1,2),(3,'2021-03-03 00:00:00',1,3),(4,'2020-09-30 00:00:00',2,4),(5,'2021-11-01 00:00:00',2,5);
+INSERT INTO `purchases` VALUES (1,'2019-01-23 00:00:00',1,1),(2,'2020-03-29 00:00:00',1,2),(3,'2021-03-03 00:00:00',1,3),(4,'2020-09-30 00:00:00',2,4),(5,'2021-11-01 00:00:00',2,5),(25,'2023-02-02 00:00:00',3,2),(29,'2022-02-02 00:00:00',3,1),(31,'2020-02-03 00:00:00',1,4);
 /*!40000 ALTER TABLE `purchases` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
@@ -115,7 +115,8 @@ DECLARE time_difference_user long;
     SELECT count(purchases.id)
     INTO purchased
     FROM purchases
-    WHERE NEW.user_id = purchases.user_id
+    WHERE NEW.id <> purchases.id 
+    AND NEW.user_id = purchases.user_id
     AND NEW.ebook_id = purchases.ebook_id;
     
     IF time_difference_user < 0 THEN
@@ -141,4 +142,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-11-25 16:46:09
+-- Dump completed on 2021-12-04 16:12:29

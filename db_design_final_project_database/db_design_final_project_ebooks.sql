@@ -33,7 +33,7 @@ CREATE TABLE `ebooks` (
   KEY `author_id_idx` (`author_id`),
   CONSTRAINT `ebooks_to_author` FOREIGN KEY (`author_id`) REFERENCES `authors` (`id`),
   CONSTRAINT `ebooks_to_genre` FOREIGN KEY (`genre`) REFERENCES `genres` (`genre`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -107,4 +107,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-11-25 16:46:10
+-- Dump completed on 2021-12-04 16:12:29
