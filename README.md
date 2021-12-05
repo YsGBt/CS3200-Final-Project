@@ -24,4 +24,4 @@
 > ### Implementation details: <br />
 > > 1. User can only purchase the e-book if the user born before the purchase date and the book is published before the purchase date. <br />
 > > 2. User are not allowed to pruchase the same e-book multiple time. <br />
-> > 3. Author can only published the e-book if the author born before the published date. <br />
+> > 3. Author can only publish the e-book if the author born before the published date. <br />
