@@ -25,6 +25,7 @@
 > > - User can only purchase the e-book if the user born before the purchase date and the book is published before the purchase date. <br />
 > > - User are not allowed to pruchase the same e-book multiple time. <br />
 > > - Author can only publish the e-book if the author born before the publish date. <br />
+> > - Genre cannot be create, update, or delete as it is an enumeration class. <br />
 
 ## Description of The User Model:
 > The user of this application is represented as a user in our EBook store. The user can see their purchases to EBooks and can view the author of those EBooks. The user is represented to have a first and last name, a username and password to login to the application, an email for notifications, and a date of birth. All of these are represented as strings except for the date of birth which is represented as a date.
@@ -39,4 +40,4 @@
 > There is only one relationship between a domain object and another domain object, and this is from an Author to an Ebook. We represent this relationship as an Author who wrote an Ebook as a one-to-many relationship. This is because an author can write many different EBooks.
 
 ## Description of The Portable Enumeration:
-> We wanted to represent the list of genres of books that are available in our EBook store as a portable enumeration. There are only five genres of EBooks that our store sells and those are fantasy, mystery, science fiction, historical fiction, and romance. We represented this not using the SQL keyword but as a class as its own. The value of the primary key is the name of the genre as a string. We disallow the addition of new genres in the UI.
+> We wanted to represent the list of genres of books that are available in our EBook store as a portable enumeration. There are only five genres of EBooks that our store sells and those are fantasy, mystery, science fiction, historical fiction, and romance. We represented this not using the SQL keyword but as a class as its own. The value of the primary key is the name of the genre as a string. **We disallow the addition or deletion of new genres in the UI.**
