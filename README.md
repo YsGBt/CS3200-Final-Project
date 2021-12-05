@@ -6,7 +6,7 @@
  
 ## Brief Description of The Project
 > [Link to UML class diagram](https://github.com/YsGBt/CS3200-Final-Project/blob/main/db_design_final_project_UML.pdf) <br />
-> Ohe goal of our project is to create a basic e-book store. There are users, eBooks, authors, purchase records, and eBook genres in our database. Users may buy any book in the database and see their purchase history, as well as information about the book they bought, such as the book title, genre and author. <br />
+> The goal of our project is to create a basic e-book store. There are users, eBooks, authors, purchase records, and eBook genres in our database. Users may buy any book in the database and see their purchase history, as well as information about the book they bought, such as the book title, genre and author. <br />
 > Our User Interface is implemented through JavaScript's React. To run the User Interface: <br />
 > 1. Import all the data and structure from src/main/other/sql/db_design_final_project_database.zip to sql database. <br />
 > 2. Change the url, username, and password in src/main/resources/application.properties to connect with your local database. <br />
