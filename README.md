@@ -22,6 +22,21 @@
 > > - **Many-to-one Edit Screen** Function the same as Editor Screen. Find the one side record by the many side id. <br />
 > > - **One-to-many List Screen** List all the associated records on the many side. Include a "creat" button to create a new record. <br />
 > ### Implementation details: <br />
-> > 1. User can only purchase the e-book if the user born before the purchase date and the book is published before the purchase date. <br />
-> > 2. User are not allowed to pruchase the same e-book multiple time. <br />
-> > 3. Author can only publish the e-book if the author born before the published date. <br />
+> > - User can only purchase the e-book if the user born before the purchase date and the book is published before the purchase date. <br />
+> > - User are not allowed to pruchase the same e-book multiple time. <br />
+> > - Author can only publish the e-book if the author born before the published date. <br />
+
+## Description of The User Model:
+> The user of this application is represented as a user in our EBook store. The user can see their purchases to EBooks and can view the author of those EBooks. The user is represented to have a first and last name, a username and password to login to the application, an email for notifications, and a date of birth. All of these are represented as strings except for the date of birth which is represented as a date.
+
+## Description of The Two Domain Object Data Models:
+> Our EBook store is represented to have two domain objects which are EBooks and Author. The EBooks domain object represents an EBook that has a title represented as a string, published year represented as an integer, and a genre as an enumeration. The author domain object represents an author of an EBook represented to have a first name and last name as a string and a date of birth represented as a date.
+
+## Description of The User Domain Object Relationship:
+> There is only one relationship between a user and a domain object, and this is from a user to an EBook. We represent this relationship as a user has purchased a specific EBook. We represent this relationship as a many-to-many relationship as one user can buy many EBooks and an EBook can we purchased by many users. We reify to a class named Purchases, but we add a field which is purchaseDate represented as a date.
+
+## Description of The Domain Object To Domain Object Relationship:
+> There is only one relationship between a domain object and another domain object, and this is from an Author to an Ebook. We represent this relationship as an Author who wrote an Ebook as a one-to-many relationship. This is because an author can write many different EBooks.
+
+## Description of The Portable Enumeration:
+> We wanted to represent the list of genres of books that are available in our EBook store as a portable enumeration. There are only five genres of EBooks that our store sells and those are fantasy, mystery, science fiction, historical fiction, and romance. We represented this not using the SQL keyword but as a class as its own. The value of the primary key is the name of the genre as a string. We disallow the addition of new genres in the UI.
