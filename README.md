@@ -5,14 +5,14 @@
 > **Team member:** Qishen Pang, Kevin Park <br />
  
 ## Brief Description of The Project
-> [Link to UML class diagram](https://github.com/YsGBt/CS3200-Final-Project/blob/main/db_design_final_project_UML.pdf) <br />
 > The goal of our project is to create a basic e-book store. There are users, eBooks, authors, purchase records, and eBook genres in our database. Users may buy any book in the database and see their purchase history, as well as information about the book they bought, such as the book title, genre and author. <br />
 > Our User Interface is implemented through JavaScript's React. To run the User Interface: <br />
 > 1. Import all the data and structure from src/main/other/sql/db_design_final_project_database.zip to sql database. <br />
 > 2. Change the url, username, and password in src/main/resources/application.properties to connect with your local database. <br />
 > 3. Run the DemoApplication in src/main/java/ebooks/database. <br />
 > 4. Copy the following link and paste it into your web browser: <br />
-> http://localhost:63342/db-final-project-ebook-store/spring-template/src/main/webapp/ebook.store/ <br />
+> http://localhost:63342/db-final-project-ebook-store/spring-template/src/main/webapp/ebook.store/ <br /> <br />
+> ![Link to UML class diagram](https://github.com/YsGBt/CS3200-Final-Project/blob/main/cs3200-final-project-UML.PNG?raw=true) <br />
 
 ## User Interface Requirements
 > ### There are five kind of screens: <br />
@@ -24,7 +24,7 @@
 > ### Implementation details: <br />
 > > - User can only purchase the e-book if the user born before the purchase date and the book is published before the purchase date. <br />
 > > - User are not allowed to pruchase the same e-book multiple time. <br />
-> > - Author can only publish the e-book if the author born before the published date. <br />
+> > - Author can only publish the e-book if the author born before the publish date. <br />
 
 ## Description of The User Model:
 > The user of this application is represented as a user in our EBook store. The user can see their purchases to EBooks and can view the author of those EBooks. The user is represented to have a first and last name, a username and password to login to the application, an email for notifications, and a date of birth. All of these are represented as strings except for the date of birth which is represented as a date.
