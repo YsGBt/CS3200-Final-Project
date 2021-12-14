@@ -27,6 +27,19 @@
 > > - `Author` can only publish the e-book if the author born before the publish date. <br />
 > > - `Genre` cannot be create, update, or delete as it is an enumeration class. <br />
 
+## Problem Statement:
+> The problem that our project is trying to solve is to capture our newly opened EBook store in a database that can keep track of users purchases to Ebooks. We want to allow users of our EBook store to be able to purchase different kinds of EBooks and get the related information about the EBook they are purchasing. This will include the author of an EBook and the genre. We will also let the user view their purchases and to login with a profile. 
+
+## Solution Statement:
+> Our solution to this was to first represent a user with fields first name, last name, username, password, email, and date of birth. This will represent the profile of the user. We then had to represent an EBook with useful fields that a user would need to know when purchasing it such as the title, purchase year, and author. We also represented the author as its own table, so that users can find out more about that author such as their first name, last name, and date of birth. The only genres of books that our EBook sells are fantasy, mystery, science fiction, historical fiction, and romance so we had to represent this as an enumeration. Users can view a list of EBooks that are a certain genre if they are interested in one. 
+
+## User:
+> The typical users that will use our solution are people who are interested in buying EBooks. We have a number of EBooks that we sell in our EBook store and the user can look up a list of EBooks that we are selling by genre or author, and they can keep track of the purchases that they have made. 
+
+## Domain Objects: 
+> The domain we are considering is an EBook store and the two domain objects that we have implemented in our solution are an EBook and an Author. We represented an EBook to have a title, purchase year, and a reference to an author. We represented an Author to have a first name, last name, and date of birth. In the user interface, a user can interact with an EBook by clicking on it and seeing who wrote the book, the title of the book, when it was published, and the genre of the book. They can also click on the author of the book to learn more about the author. A user can interact with an author by clicking on one, to see their name, their date of birth, and a list of EBooks that they have written. 
+
+
 ## Description of The User Model:
 > The `user` of this application is represented as a user in our EBook store. The user can see their purchases to EBooks and can view the author of those EBooks. The user is represented to have a first and last name, a username and password to login to the application, an email for notifications, and a date of birth. All of these are represented as strings except for the date of birth which is represented as a date.
 
