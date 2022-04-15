@@ -2,7 +2,7 @@
 
 ## Final Project For CS3200 
 > **Project Name:** Ebook Store <br />
-> **Team member:** Qishen Pang, Kevin Park <br />
+> **Team member:** YsGBt, Kevin Park <br />
  
 ## Brief Description of The Project
 > The goal of our project is to create a basic e-book store. There are users, eBooks, authors, purchase records, and eBook genres in our database. Users may buy any book in the database and see their purchase history, as well as information about the book they bought, such as the book title, genre and author. <br />
